@@ -1,0 +1,326 @@
+[gd_scene load_steps=34 format=3 uid="uid://4xwi6s7ket11"]
+
+[ext_resource type="Script" path="res://script/main.gd" id="1_vew3f"]
+[ext_resource type="Script" path="res://script/character_body_3d.gd" id="2_ke8gg"]
+[ext_resource type="Script" path="res://scene/static_body_3d.gd" id="3_28kjn"]
+[ext_resource type="Script" path="res://script/mesh_instance_2d.gd" id="3_ihblg"]
+[ext_resource type="Script" path="res://script/buttonplay.gd" id="4_ys2b4"]
+[ext_resource type="Script" path="res://script/taillle_lab.gd" id="5_e6yjc"]
+[ext_resource type="Script" path="res://script/taiile_lab_11.gd" id="6_msc76"]
+[ext_resource type="Script" path="res://script/sup.gd" id="7_45vlo"]
+[ext_resource type="Script" path="res://script/modedpl.gd" id="8_wx8hx"]
+[ext_resource type="Script" path="res://script/mode_dpl.gd" id="9_qr8cf"]
+[ext_resource type="Script" path="res://script/label.gd" id="10_uj4uw"]
+[ext_resource type="Script" path="res://script/control_menu.gd" id="11_peb4u"]
+[ext_resource type="Script" path="res://scene/mesh_instance_2d.gd" id="12_d461n"]
+[ext_resource type="Script" path="res://scene/mesh_instance_2d_2.gd" id="13_idd5q"]
+[ext_resource type="Script" path="res://scene/mesh_instance_2d_3.gd" id="14_6rsdx"]
+[ext_resource type="Script" path="res://scene/cube_4.gd" id="15_cu0ck"]
+[ext_resource type="Script" path="res://scene/button.gd" id="15_ft2ro"]
+[ext_resource type="PackedScene" uid="uid://ba71nonpalk2k" path="res://scene/finish.tscn" id="18_a2xk6"]
+[ext_resource type="Script" path="res://scene/chrono_2.gd" id="19_2exwo"]
+[ext_resource type="Script" path="res://scene/check_button.gd" id="19_fvspo"]
+[ext_resource type="Script" path="res://scene/finish.gd" id="20_50jht"]
+[ext_resource type="Script" path="res://scene/finishpp.gd" id="22_boqh5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hyegh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ckn0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2p40v"]
+
+[sub_resource type="Environment" id="Environment_oivgx"]
+background_mode = 1
+background_color = Color(0.0745098, 0.0745098, 0.0745098, 0.878431)
+background_energy_multiplier = 0.0
+ambient_light_energy = 0.0
+reflected_light_source = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_6p0gd"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jpg17"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hbn4q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t555h"]
+
+[sub_resource type="TextMesh" id="TextMesh_65bnp"]
+material = SubResource("StandardMaterial3D_t555h")
+text = "X"
+
+[sub_resource type="TextMesh" id="TextMesh_eaiit"]
+text = "Y"
+
+[sub_resource type="TextMesh" id="TextMesh_6f1ko"]
+text = "Z
+"
+
+[node name="main" type="Node"]
+script = ExtResource("1_vew3f")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 1.5)
+script = ExtResource("2_ke8gg")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_hyegh")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D"]
+light_energy = 0.5
+light_indirect_energy = 0.3
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 5, 0, 0, 0, 50, 0, -3.42523, 0)
+visible = false
+script = ExtResource("3_28kjn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_4ckn0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_2p40v")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_oivgx")
+
+[node name="menu" type="Node" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="menu"]
+self_modulate = Color(1, 1, 1, 0.494118)
+show_behind_parent = true
+position = Vector2(1023.5, 472.5)
+scale = Vector2(223, 235)
+mesh = SubResource("QuadMesh_6p0gd")
+script = ExtResource("3_ihblg")
+
+[node name="play" type="Button" parent="menu"]
+offset_left = 512.0
+offset_top = 172.0
+offset_right = 667.0
+offset_bottom = 288.0
+text = "Play
+"
+script = ExtResource("4_ys2b4")
+
+[node name="Taillle lab" type="Label" parent="menu"]
+visible = false
+offset_left = 571.0
+offset_top = 319.0
+offset_right = 627.0
+offset_bottom = 353.0
+script = ExtResource("5_e6yjc")
+
+[node name="inf" type="Button" parent="menu/Taillle lab"]
+layout_mode = 0
+offset_left = -61.0
+offset_top = -5.0
+offset_right = -31.0
+offset_bottom = 26.0
+text = "- 
+"
+script = ExtResource("6_msc76")
+
+[node name="sup" type="Button" parent="menu/Taillle lab"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = -7.0
+offset_right = 91.0
+offset_bottom = 24.0
+text = "+   
+"
+script = ExtResource("7_45vlo")
+
+[node name="mode_dpl" type="Label" parent="menu"]
+offset_left = 517.0
+offset_top = 397.0
+offset_right = 658.0
+offset_bottom = 448.0
+script = ExtResource("8_wx8hx")
+
+[node name="mode dpl" type="Button" parent="menu/mode_dpl"]
+layout_mode = 0
+offset_top = 28.0
+offset_right = 143.0
+offset_bottom = 59.0
+text = ">"
+script = ExtResource("9_qr8cf")
+
+[node name="Label" type="Label" parent="menu"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 926.0
+offset_top = 357.0
+offset_right = 1115.0
+offset_bottom = 588.0
+text = "camera :  fleches 
+avancer : z 
+reculer : s
+lumiere intensité : + et -
+
+camera : arrows
+forward :  z
+backward : s 
+light's intentsity : + and -"
+script = ExtResource("10_uj4uw")
+
+[node name="controls" type="Button" parent="."]
+offset_left = 994.0
+offset_top = 604.0
+offset_right = 1136.0
+offset_bottom = 635.0
+text = "controles"
+script = ExtResource("11_peb4u")
+
+[node name="Positioncube" type="Node" parent="."]
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="Positioncube"]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+scale = Vector2(8.00001, 3.75)
+mesh = SubResource("CylinderMesh_jpg17")
+script = ExtResource("14_6rsdx")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Positioncube"]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+scale = Vector2(8.00001, 3.75)
+mesh = SubResource("CylinderMesh_jpg17")
+script = ExtResource("13_idd5q")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Positioncube"]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+scale = Vector2(8.00001, 3.75)
+mesh = SubResource("CylinderMesh_jpg17")
+script = ExtResource("12_d461n")
+
+[node name="cube4" type="MeshInstance2D" parent="Positioncube"]
+position = Vector2(500, 150)
+scale = Vector2(150, 150)
+mesh = SubResource("BoxMesh_hbn4q")
+script = ExtResource("15_cu0ck")
+
+[node name="cube3" type="MeshInstance2D" parent="Positioncube"]
+position = Vector2(325, 150)
+scale = Vector2(150, 150)
+mesh = SubResource("BoxMesh_hbn4q")
+script = ExtResource("15_cu0ck")
+
+[node name="cube2" type="MeshInstance2D" parent="Positioncube"]
+position = Vector2(150, 150)
+scale = Vector2(150, 150)
+mesh = SubResource("BoxMesh_hbn4q")
+script = ExtResource("15_cu0ck")
+
+[node name="position" type="Button" parent="Positioncube"]
+offset_left = 24.0
+offset_top = 23.0
+offset_right = 95.0
+offset_bottom = 54.0
+text = "position
+"
+script = ExtResource("15_ft2ro")
+
+[node name="CheckButton" type="CheckButton" parent="Positioncube"]
+offset_left = 536.0
+offset_top = 447.0
+offset_right = 648.0
+offset_bottom = 515.0
+text = "position"
+script = ExtResource("19_fvspo")
+
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="Positioncube"]
+modulate = Color(0.419608, 0, 0, 1)
+position = Vector2(146, 51)
+scale = Vector2(216.904, 180.122)
+mesh = SubResource("TextMesh_65bnp")
+script = ExtResource("15_cu0ck")
+
+[node name="MeshInstance2D5" type="MeshInstance2D" parent="Positioncube"]
+modulate = Color(0.419608, 0, 0, 1)
+position = Vector2(325, 51)
+scale = Vector2(216.904, 180.122)
+mesh = SubResource("TextMesh_65bnp")
+script = ExtResource("15_cu0ck")
+
+[node name="MeshInstance2D6" type="MeshInstance2D" parent="Positioncube"]
+modulate = Color(0, 0.435294, 0, 1)
+position = Vector2(239, 144)
+scale = Vector2(-232.343, -208.333)
+mesh = SubResource("TextMesh_eaiit")
+script = ExtResource("15_cu0ck")
+
+[node name="MeshInstance2D7" type="MeshInstance2D" parent="Positioncube"]
+modulate = Color(0, 0, 0.631373, 1)
+position = Vector2(58.1499, 148.917)
+scale = Vector2(294.239, -216.667)
+mesh = SubResource("TextMesh_6f1ko")
+script = ExtResource("15_cu0ck")
+
+[node name="MeshInstance2D8" type="MeshInstance2D" parent="Positioncube"]
+modulate = Color(0, 0.435294, 0, 1)
+position = Vector2(412, 147)
+rotation = -3.14159
+scale = Vector2(232.343, 208.333)
+mesh = SubResource("TextMesh_eaiit")
+script = ExtResource("15_cu0ck")
+
+[node name="MeshInstance2D9" type="MeshInstance2D" parent="Positioncube"]
+modulate = Color(0, 0, 0.631373, 1)
+position = Vector2(502, 57)
+scale = Vector2(294.239, -216.667)
+mesh = SubResource("TextMesh_6f1ko")
+script = ExtResource("15_cu0ck")
+
+[node name="finish" parent="." instance=ExtResource("18_a2xk6")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 1010, 10000, 1.11e+07)
+script = ExtResource("20_50jht")
+
+[node name="Chrono" type="Timer" parent="."]
+
+[node name="Chrono2" type="Label" parent="."]
+offset_left = 917.0
+offset_top = 604.0
+offset_right = 972.0
+offset_bottom = 627.0
+script = ExtResource("19_2exwo")
+
+[node name="Finish" type="Label" parent="."]
+modulate = Color(0, 1, 0, 1)
+z_index = 10
+offset_left = 548.0
+offset_top = 273.0
+offset_right = 1294.0
+offset_bottom = 744.0
+text = "Finish !!!"
+script = ExtResource("22_boqh5")
+
+[connection signal="finish" from="CharacterBody3D" to="." method="_on_character_body_3d_finish"]
+[connection signal="finish" from="CharacterBody3D" to="Finish" method="_on_character_body_3d_finish"]
+[connection signal="pressed" from="menu/play" to="." method="_on_button_pressed_play"]
+[connection signal="pressed" from="menu/play" to="CharacterBody3D" method="_on_play_pressed"]
+[connection signal="pressed" from="menu/play" to="menu" method="_on_play_pressed"]
+[connection signal="pressed" from="menu/play" to="menu/play" method="_on_pressed"]
+[connection signal="pressed" from="menu/play" to="menu/play" method="_on_pressed_play"]
+[connection signal="pressed" from="menu/play" to="menu/Taillle lab" method="_on_play_pressed"]
+[connection signal="pressed" from="menu/play" to="menu/Taillle lab/inf" method="_on_play_pressed"]
+[connection signal="pressed" from="menu/play" to="menu/Taillle lab/sup" method="_on_play_pressed"]
+[connection signal="pressed" from="menu/play" to="menu/mode_dpl" method="_on_play_pressed"]
+[connection signal="pressed" from="menu/play" to="controls" method="_on_play_pressed"]
+[connection signal="pressed" from="menu/play" to="Positioncube/CheckButton" method="_on_play_pressed"]
+[connection signal="pressed" from="menu/Taillle lab/inf" to="." method="_on_inf_pressed"]
+[connection signal="pressed" from="menu/Taillle lab/inf" to="menu/Taillle lab/inf" method="_on_pressed"]
+[connection signal="pressed" from="menu/Taillle lab/sup" to="menu/Taillle lab/sup" method="_on_pressed"]
+[connection signal="pressed" from="menu/mode_dpl/mode dpl" to="menu/mode_dpl/mode dpl" method="_on_pressed"]
+[connection signal="pressed" from="controls" to="menu/MeshInstance2D" method="_on_controls_pressed"]
+[connection signal="pressed" from="controls" to="menu/Label" method="_on_controls_pressed"]
+[connection signal="pressed" from="controls" to="controls" method="_on_pressed"]
+[connection signal="pressed" from="Positioncube/position" to="." method="_on_position_pressed"]
+[connection signal="pressed" from="Positioncube/position" to="Positioncube/position" method="_on_pressed"]
+[connection signal="pressed" from="Positioncube/CheckButton" to="Positioncube/position" method="_on_check_button_pressed"]
+[connection signal="pressed" from="Positioncube/CheckButton" to="Positioncube/CheckButton" method="_on_pressed"]
+[connection signal="body_shape_entered" from="finish" to="CharacterBody3D" method="_on_finish_body_shape_entered"]
+[connection signal="timeout" from="Chrono" to="Chrono2" method="_on_chrono_timeout"]
